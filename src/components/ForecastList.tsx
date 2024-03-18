@@ -5,7 +5,7 @@ import { RootState } from "../state/store";
 import { unixDayMonthConverter } from "../utilities/UnixConverter";
 import { tempCalculator } from "../utilities/TempCalculator";
 
-export default function Forecast() {
+export default function ForecastList() {
 
     const useGetWeatherQuery = weatherAPI.endpoints.getWeather.useQuery
     const city = useSelector((state: RootState) => state.city.city);
