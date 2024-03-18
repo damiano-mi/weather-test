@@ -7,12 +7,12 @@ interface CityState {
 
 const initialState: CityState = {
     city: {
-        name: "Rome",
+        name: "London",
         local_names: {},
-        lat: 41.8933203,
-        lon: 12.4829321,
-        country: "IT",
-        state: "Lazio"
+        lat: 51.5073219,
+        lon: -0.1276474,
+        country: "GB",
+        state: "England"
     }
 }
 

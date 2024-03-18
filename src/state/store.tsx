@@ -3,7 +3,7 @@ import { setupListeners } from "@reduxjs/toolkit/query"
 import { weatherAPI } from "../services/weatherAPI"
 import { citiesAPI } from "../services/citiesAPI"
 import cityReducer from "./city/citySlice"
-import tempReducer from "./city/tempSlice"
+import tempReducer from "./temperature/tempSlice"
 
 export const store = configureStore({
   reducer: {

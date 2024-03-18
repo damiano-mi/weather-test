@@ -1,21 +1,35 @@
 import "bootstrap/dist/css/bootstrap.css"
-import MainWeather from "../components/MainWeather";
+import MainDisplay from "../components/MainDisplay";
 import Navbar from "../components/Navbar";
+import Forecast from "../components/Forecast";
+import AlertsDisplay from "../components/AlertsDisplay";
+import WorldDisplay from "../components/WorldDisplay";
 
 export default function Home() {
 
     return (
-        <div className="h-100 d-flex align-items-center justify-content-center">
-            <div className="d-flex justify-content-center align-items-center" style={{ width: 700 }}>
+        <>
+            <div className="container-fluid" style={{ width: 800 }}>
                 <div className="col">
                     <div className="row">
                         <Navbar />
                     </div>
                     <div className="row">
-                        <MainWeather />
+                        <MainDisplay />
+                    </div>
+                    <div className="row mt-3">
+                        <Forecast />
+                    </div>
+                    <div className="row mt-3">
+                        <div className="col">
+                            <AlertsDisplay />
+                        </div>
+                        <div className="col">
+                            <WorldDisplay />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }

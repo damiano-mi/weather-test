@@ -12,7 +12,6 @@ export default function SearchBar() {
     const useGetCityQuery = citiesAPI.endpoints.getCity.useQuery;
     const [input, setInput] = useState<string>("");
     const [displayBar, setDisplayBar] = useState<boolean>(false);
-    const [displayResults, setDisplayResults] = useState<boolean>(true);
     const dispatch = useDispatch<AppDispatch>();
     const { data } = useGetCityQuery(input);
 
@@ -55,11 +54,11 @@ export default function SearchBar() {
 
                 <div className="col">
                     <button className="searchIcon" onClick={handleSearchButton}>
-                        <Icon.Search size={25} className="my-2" />
+                        <Icon.Search size={25} className="" />
                     </button>
                 </div>
             </div>
-            {displayBar && displayResults &&
+            {displayBar &&
                 <div className="searchResults">
                     {input && data && data.map((city, id) => {
                         return <a className="dataItem" key={id} onClick={() => searchCity(id)}>
