@@ -37,11 +37,12 @@ const HourlyTable: React.FC<HourlyTableProps> = (props: HourlyTableProps) => {
             <div>
                 <table className="table table-dark border-light">
                     <thead>
-                        <tr>
+                        <tr className="">
                             <th><Icon.ClockFill size={26} /></th>
+                            <th><Icon.CloudSun size={26} /></th>
                             <th><Icon.Thermometer size={26} /></th>
                             <th><Icon.CloudRainFill size={26} /></th>
-                            <th><Icon.Sunset size={26} /></th>
+                            <th>UV</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,6 +51,7 @@ const HourlyTable: React.FC<HourlyTableProps> = (props: HourlyTableProps) => {
                                 return (
                                     <tr className="align-middle" key={hour.dt}>
                                         <td className="fs-1">{unixHourConverter(hour.dt)}</td>
+                                        <td className="fs-1"><img className="" src={"https://openweathermap.org/img/wn/" + hour.weather[0].icon + "@2x.png"} alt="weather-icon" /></td>
                                         <td className="fs-5">{tempCalculator(hour.temp, selectedTemp)}</td>
                                         <td className="fs-5">{hour.pop} %</td>
                                         <td className="fs-5">{hour.uvi}</td>

@@ -1,22 +1,28 @@
 import "bootstrap/dist/css/bootstrap.css"
-import { weatherAPI } from "../services/weatherAPI";
-import { useSelector } from "react-redux";
-import { RootState } from "../state/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../state/store";
 import { unixDayMonthConverter } from "../utilities/UnixConverter";
 import { tempCalculator } from "../utilities/TempCalculator";
+import { setDay } from "../state/weather/weatherSlice";
 
 export default function ForecastList() {
 
-    const useGetWeatherQuery = weatherAPI.endpoints.getWeather.useQuery
-    const city = useSelector((state: RootState) => state.city.city);
     const selectedTemp = useSelector((state: RootState) => state.temp.temp);
-    const { data, isLoading } = useGetWeatherQuery({ lat: city.lat, lon: city.lon });
+    const weather = useSelector((state: RootState) => state.weather.weather);
+    const dispatch = useDispatch<AppDispatch>();
+
+    function handleDay(dt : number){
+        dispatch(setDay(dt));
+    }
 
     return (
-        <div className="card-group card-group-scroll">
-            {data?.daily.map((day) => {
+        <div className="card-group card-group-scroll" id="forecast">
+            {weather?.daily.map((day) => {
                 return (
-                    <div className="card text-center text-white bg-white bg-opacity-25 bg-gradient border-0 shadow rounded-5 ms-2 me-2 mb-3">
+                    <div className="card text-center text-white bg-white bg-opacity-25 bg-gradient border-0 shadow rounded-5 ms-2 me-2 mb-3"
+                        onClick={() => handleDay(day.dt)}
+                        key={day.dt}
+                    >
                         <div className="col">
                             <div className="row">
                                 <p className="fw-bold fs-3 text-center m-auto">{unixDayMonthConverter(day.dt)}</p>

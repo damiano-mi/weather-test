@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css"
 import MainDisplay from "../components/MainDisplay";
 import Navbar from "../components/Navbar";
-import Forecast from "../components/Forecast";
+import Forecast from "../components/ForecastList";
 import AlertsDisplay from "../components/AlertsDisplay";
 import WorldDisplay from "../components/WorldDisplay";
 

@@ -1,6 +1,8 @@
 export function unixHourConverter(timestamp: number){
     let date = new Date(timestamp * 1000);
-    return date.getHours();
+    let hour = date.getHours();
+    if(hour>=0 && hour<=9) return "0" + hour;
+    return ""+hour;
 }
 
 export function unixDateConverter(timestamp: number){

@@ -131,28 +131,28 @@ tr {
     flex-basis: 35%;
 }
 
-::-webkit-scrollbar {
+#forecast::-webkit-scrollbar {
     width: 10px;
     border-radius: 25px;
     margin-top: 5px;
 }
 
-::-webkit-scrollbar-track {
-    background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.25) 100%);
+#forecast::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.25) 100%);
     border-radius: 25px;
     margin-top: 5px;
     border-width: 0;
 }
 
-::-webkit-scrollbar-thumb {
-    background: rgb(99,99,99);
-    background: radial-gradient(circle, rgba(99,99,99,1) 0%, rgba(82,82,82,1) 100%);
+#forecast::-webkit-scrollbar-thumb {
+    background: rgb(99, 99, 99);
+    background: radial-gradient(circle, rgba(99, 99, 99, 1) 0%, rgba(82, 82, 82, 1) 100%);
     border-radius: 25px;
     margin-top: 5px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+#forecast::-webkit-scrollbar-thumb:hover {
     background: #555;
     border-radius: 25px;
     margin-top: 5px;

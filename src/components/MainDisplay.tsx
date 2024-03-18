@@ -1,14 +1,16 @@
 import "bootstrap/dist/css/bootstrap.css"
 import * as Icon from 'react-bootstrap-icons';
 import { weatherAPI } from "../services/weatherAPI";
-import { useSelector } from "react-redux";
-import { RootState } from "../state/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../state/store";
 import { tempCalculator } from "../utilities/TempCalculator";
 import TempButton from "./TempButton";
 import PositionButton from "./PositionButton";
 import HourlyTable from "./HourlyTable";
 import { hourlyExists } from "../utilities/HourlyExists";
 import { unixDateHourConverter } from "../utilities/UnixConverter";
+import { setWeather } from "../state/weather/weatherSlice";
+import DailyTable from "./DailyTable";
 
 export default function MainDisplay() {
 
@@ -16,6 +18,9 @@ export default function MainDisplay() {
     const city = useSelector((state: RootState) => state.city.city);
     const selectedTemp = useSelector((state: RootState) => state.temp.temp);
     const { data, isLoading } = useGetWeatherQuery({ lat: city.lat, lon: city.lon });
+    const day = useSelector((state: RootState) => state.weather.day);
+    const dispatch = useDispatch<AppDispatch>();
+    dispatch(setWeather(data!));
 
     return (
         <>
@@ -60,6 +65,7 @@ export default function MainDisplay() {
                             </div>
                             <div className="col d-flex flex-column justify-content-md-center">
                                 <img src={"https://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@4x.png"} alt="weather-icon" />
+                                {/*<p>{data.current.weather[0].description}</p>*/}
                             </div>
                             <div className="col d-flex flex-column justify-content-md-center">
                                 <div className="row align-items-center">
@@ -78,13 +84,13 @@ export default function MainDisplay() {
                         </div>
                     </div>
                     {
-                        hourlyExists(data.hourly, data.current.dt) ?
-                        <HourlyTable hourly={data.hourly} date={data.current.dt} />
+                        hourlyExists(data.hourly, day) ?
+                        <HourlyTable hourly={data.hourly} date={day} />
                         :
-                        ""
+                        <DailyTable date={day} />
                     }
                     <div className="card-footer bg-transparent">
-                        <p>{unixDateHourConverter(data.current.dt)}</p>
+                        <p>{unixDateHourConverter(day)}</p>
                     </div>
                 </div>
             }
