@@ -19,3 +19,13 @@ export function unixDayMonthConverter(timestamp: number){
     let date = new Date(timestamp * 1000);
     return date.getDate() + " " + date.toLocaleString('default', { month: 'long' });
 }
+
+const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+const d = new Date();
+let day = weekday[d.getDay()];
+
+export function unixDayNameConverter(timestamp: number){
+    let date = new Date(timestamp * 1000);
+    return date.getDate() + " " + date.toLocaleString('default', { month: 'long' });
+}

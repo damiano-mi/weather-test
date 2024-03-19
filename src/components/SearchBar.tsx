@@ -61,11 +61,11 @@ export default function SearchBar() {
             {displayBar &&
                 <div className="searchResults">
                     {input && data && data.map((city, id) => {
-                        return <a className="dataItem" key={id} onClick={() => searchCity(id)}>
+                        return <p className="dataItem" key={id} onClick={() => searchCity(id)}>
                             {city.name}
                             {city.state ? " (" + city.state + "), " : ", "}
                             {city.country}
-                        </a>;
+                        </p>;
                     })}
                 </div>
             }

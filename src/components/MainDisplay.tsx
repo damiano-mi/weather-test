@@ -4,8 +4,8 @@ import { weatherAPI } from "../services/weatherAPI";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../state/store";
 import { tempCalculator } from "../utilities/TempCalculator";
-import TempButton from "./TempButton";
-import PositionButton from "./PositionButton";
+import TemperatureButton from "./TemperatureButton";
+import LocationButton from "./LocationButton";
 import HourlyTable from "./HourlyTable";
 import { hourlyExists } from "../utilities/HourlyExists";
 import { unixDateHourConverter } from "../utilities/UnixConverter";
@@ -16,9 +16,9 @@ export default function MainDisplay() {
 
     const useGetWeatherQuery = weatherAPI.endpoints.getWeather.useQuery
     const city = useSelector((state: RootState) => state.city.city);
-    const selectedTemp = useSelector((state: RootState) => state.temp.temp);
+    const selectedTemp = useSelector((state: RootState) => state.temperature.temperature);
     const { data, isLoading } = useGetWeatherQuery({ lat: city.lat, lon: city.lon });
-    const day = useSelector((state: RootState) => state.weather.day);
+    const selectedDay = useSelector((state: RootState) => state.weather.day);
     const dispatch = useDispatch<AppDispatch>();
     dispatch(setWeather(data!));
 
@@ -26,13 +26,13 @@ export default function MainDisplay() {
         <>
             {isLoading && <div className="spinner-border text-white"><div className="visually-hidden">Loading</div></div>}
             {data &&
-                <div className="card text-center text-white bg-dark bg-opacity-25 bg-gradient border-0 shadow rounded-5">
+                <div className="card text-center text-white bg-dark bg-opacity-25 bg-gradient border-0 shadow rounded-5" id="mainDisplay">
 
                     <div className="card-title mt-2">
                         <div className="row">
 
                             <div className="col-md-auto">
-                                <TempButton />
+                                <TemperatureButton />
                             </div>
 
                             <div className="col mt-1">
@@ -49,7 +49,7 @@ export default function MainDisplay() {
                                 </div>
                             </div>
                             <div className="col-md-auto">
-                                <PositionButton />
+                                <LocationButton />
                             </div>
                         </div>
                     </div>
@@ -84,13 +84,13 @@ export default function MainDisplay() {
                         </div>
                     </div>
                     {
-                        hourlyExists(data.hourly, day) ?
-                        <HourlyTable hourly={data.hourly} date={day} />
+                        hourlyExists(data.hourly, selectedDay) ?
+                        <HourlyTable hourly={data.hourly} selectedDay={selectedDay} />
                         :
-                        <DailyTable date={day} />
+                        <DailyTable selectedDay={selectedDay} />
                     }
                     <div className="card-footer bg-transparent">
-                        <p>{unixDateHourConverter(day)}</p>
+                        <p>{unixDateHourConverter(selectedDay)}</p>
                     </div>
                 </div>
             }

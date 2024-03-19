@@ -9,23 +9,18 @@ import { useState } from "react";
 
 type HourlyTableProps = {
     hourly: HourlyWeather[],
-    date: number
+    selectedDay: number
 }
 
 const HourlyTable: React.FC<HourlyTableProps> = (props: HourlyTableProps) => {
 
-    const selectedTemp = useSelector((state: RootState) => state.temp.temp);
-    const [toggleTable,setToggleTable] = useState<boolean>(false);
-    
-    function handleTable(){
-        if(toggleTable) setToggleTable(false);
-        else setToggleTable(true);
-    }
+    const selectedTemp = useSelector((state: RootState) => state.temperature.temperature);
+    const [toggleTable, setToggleTable] = useState<boolean>(true);
 
     return (
         <>
             <div className="text-end mb-2">
-                <button className="btn" onClick={handleTable}>
+                <button className="btn" onClick={() => setToggleTable(true)}>
                     {   !toggleTable ?
                         <Icon.ArrowDown color="white" size={25} />
                         :
@@ -37,7 +32,7 @@ const HourlyTable: React.FC<HourlyTableProps> = (props: HourlyTableProps) => {
             <div>
                 <table className="table table-dark border-light">
                     <thead>
-                        <tr className="">
+                        <tr>
                             <th><Icon.ClockFill size={26} /></th>
                             <th><Icon.CloudSun size={26} /></th>
                             <th><Icon.Thermometer size={26} /></th>
@@ -46,15 +41,15 @@ const HourlyTable: React.FC<HourlyTableProps> = (props: HourlyTableProps) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {props.hourly.filter(hour => unixDateConverter(hour.dt) === unixDateConverter(props.date))
+                        {props.hourly.filter(hour => unixDateConverter(hour.dt) === unixDateConverter(props.selectedDay))
                             .map((hour) => {
                                 return (
                                     <tr className="align-middle" key={hour.dt}>
-                                        <td className="fs-1">{unixHourConverter(hour.dt)}</td>
-                                        <td className="fs-1"><img className="" src={"https://openweathermap.org/img/wn/" + hour.weather[0].icon + "@2x.png"} alt="weather-icon" /></td>
-                                        <td className="fs-5">{tempCalculator(hour.temp, selectedTemp)}</td>
-                                        <td className="fs-5">{hour.pop} %</td>
-                                        <td className="fs-5">{hour.uvi}</td>
+                                        <td><p className="my-auto fs-2">{unixHourConverter(hour.dt)}</p></td>
+                                        <td><img className="" src={"https://openweathermap.org/img/wn/" + hour.weather[0].icon + ".png"} alt="weather-icon" /></td>
+                                        <td><p className="my-auto fs-4">{tempCalculator(hour.temp, selectedTemp)}</p></td>
+                                        <td><p className="my-auto fs-4">{hour.pop} %</p></td>
+                                        <td><p className="my-auto fs-4">{hour.uvi}</p></td>
                                     </tr>
                                 )
                             })}

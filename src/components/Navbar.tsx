@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 export default function Navbar() {
 
     return (
-        <nav className="navbar justify-content-between">
+        <nav className="navbar justify-content-between" id="navbar">
             <a className="navbar-brand" href="/">
                 <img src="https://upload.wikimedia.org/wikipedia/it/e/e2/MacOS_Ventura_logo.png"
                     width="60"

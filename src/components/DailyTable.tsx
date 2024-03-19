@@ -3,7 +3,7 @@ import * as Icon from 'react-bootstrap-icons';
 import { useState } from "react";
 
 type DailyTableProps = {
-    date: number
+    selectedDay: number
 }
 
 const DailyTable: React.FC<DailyTableProps> = (props: DailyTableProps) => {
