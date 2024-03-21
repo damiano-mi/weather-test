@@ -3,7 +3,8 @@ import { Weather } from "../../types/types";
 
 interface WeatherState {
     weather: Weather,
-    day: number
+    day: number,
+    selectedParameter: string
 }
 
 const initialState: WeatherState = {
@@ -121,7 +122,8 @@ const initialState: WeatherState = {
             }
         ]
     },
-    day: Math.floor(Date.now() / 1000)
+    day: Math.floor(Date.now() / 1000),
+    selectedParameter: "temperature"
 }
 
 const weatherSlice = createSlice({
@@ -133,9 +135,12 @@ const weatherSlice = createSlice({
         },
         setDay: (state, action: PayloadAction<number>) => {
             state.day = action.payload;
+        },
+        setParameter: (state, action: PayloadAction<string>) => {
+            state.selectedParameter = action.payload;
         }
     }
 });
 
-export const { setWeather, setDay } = weatherSlice.actions;
+export const { setWeather, setDay, setParameter } = weatherSlice.actions;
 export default weatherSlice.reducer;
