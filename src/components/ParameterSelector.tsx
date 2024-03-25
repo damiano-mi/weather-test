@@ -14,7 +14,7 @@ const ParameterSelector: React.FC<ParameterSelectorProps> = (props: ParameterSel
     return (
         <div>
             <div className="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off" onClick={() => dispatch(setParameter("temperature"))} defaultChecked={props.shortView}/>
+                <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off" onClick={() => dispatch(setParameter("temperature"))} defaultChecked={true}/>
                 <label className="btn btn-outline-light" htmlFor="btnradio1">Temperature</label>
                 {!props.shortView ?
                     (<>

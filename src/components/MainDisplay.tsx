@@ -7,7 +7,7 @@ import TemperatureButton from "./TemperatureButton";
 import LocationButton from "./LocationButton";
 import HourlyTable from "./HourlyLayout";
 import { hourlyExists } from "../utilities/HourlyExists";
-import { unixDateConverter, unixDateHourConverter } from "../utilities/UnixConverter";
+import { unixDateConverter, unixAllInfoConverter } from "../utilities/UnixConverter";
 import { setWeather } from "../state/weather/weatherSlice";
 import DailyLayout from "./DailyLayout";
 import { useEffect, useState } from "react";
@@ -24,8 +24,8 @@ export default function MainDisplay() {
 
     useEffect(() => {
         dispatch(setWeather(data!));
-    },[data,dispatch]);
-    
+    }, [data, dispatch]);
+
     return (
         <>
             {isLoading && <div className="spinner-border text-white"><div className="visually-hidden">Loading</div></div>}
@@ -58,7 +58,7 @@ export default function MainDisplay() {
                         </div>
                     </div>
                     <div className="card-body">
-                        { unixDateConverter(selectedDay)===unixDateConverter(data.current.dt) ?
+                        {unixDateConverter(selectedDay) === unixDateConverter(data.current.dt) ?
                             <MainWeather weather={data.current} />
                             :
                             <MainWeather weather={data.daily.filter((day) => day.dt === selectedDay)[0]} />
@@ -95,7 +95,7 @@ export default function MainDisplay() {
                         </div>
                     </div>
                     <div className="card-footer bg-transparent">
-                        <p>{unixDateHourConverter(selectedDay)}</p>
+                        <p>{unixAllInfoConverter(selectedDay)}</p>
                     </div>
                 </div>
 
