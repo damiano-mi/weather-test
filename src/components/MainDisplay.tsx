@@ -7,7 +7,7 @@ import TemperatureButton from "./TemperatureButton";
 import LocationButton from "./LocationButton";
 import HourlyTable from "./HourlyLayout";
 import { hourlyExists } from "../utilities/HourlyExists";
-import { unixDateConverter, unixAllInfoConverter } from "../utilities/UnixConverter";
+import { unixDateConverter, unixAllInfoConverter, unixWeekNameConverter } from "../utilities/UnixConverter";
 import { setWeather } from "../state/weather/weatherSlice";
 import DailyLayout from "./DailyLayout";
 import { useEffect, useState } from "react";
@@ -49,7 +49,12 @@ export default function MainDisplay() {
                                     </p>
                                 </div>
                                 <div className="row">
-                                    <div className="fs-3 mb-auto">Now</div>
+                                    <div className="fs-3 mb-auto">
+                                        {
+                                            unixDateConverter(selectedDay) === unixDateConverter(data.current.dt) ?
+                                                "Now" : unixWeekNameConverter(selectedDay)
+                                        }
+                                    </div>
                                 </div>
                             </div>
                             <div className="col-md-auto">
@@ -95,7 +100,10 @@ export default function MainDisplay() {
                         </div>
                     </div>
                     <div className="card-footer bg-transparent">
-                        <p>{unixAllInfoConverter(selectedDay)}</p>
+                        <p className="fs-5 my-auto">{
+                            unixDateConverter(selectedDay) === unixDateConverter(data.current.dt) ?
+                            unixAllInfoConverter(data.current.dt) : unixDateConverter(selectedDay)
+                        }</p>
                     </div>
                 </div>
 

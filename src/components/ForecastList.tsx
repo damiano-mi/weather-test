@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css"
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../state/store";
-import { unixDayMonthConverter } from "../utilities/UnixConverter";
+import { unixWeekNameConverter } from "../utilities/UnixConverter";
 import { tempCalculator } from "../utilities/TempCalculator";
 import { setDay } from "../state/weather/weatherSlice";
 
@@ -26,7 +26,7 @@ export default function ForecastList() {
                         key={day.dt}
                     >
                         <div className="">
-                            <p className="fw-bold fs-4 my-auto">{unixDayMonthConverter(day.dt)}</p>
+                            <p className="fw-bold fs-4 my-auto">{unixWeekNameConverter(day.dt)}</p>
                             <img className="my-auto" src={"https://openweathermap.org/img/wn/" + day.weather[0].icon + "@2x.png"} alt="weather-icon" />
                             <p className="fs-5 mb-2">{tempCalculator(day.temp.day, selectedTemp)}</p>
                         </div>

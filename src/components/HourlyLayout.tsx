@@ -20,8 +20,7 @@ const HourlyLayout: React.FC<HourlyLayoutProps> = (props: HourlyLayoutProps) => 
                         .filter(hour => unixDateConverter(hour.dt) === unixDateConverter(props.selectedDay))
                         .map((hour) => {
                             return (
-                                <div id="hourCard" key={hour.dt}
-                                    className="card text-white text-center bg-transparent shadow ms-2 me-2 mb-3 mt-1">
+                                <div id="hourCard" key={hour.dt} className="card text-white text-center bg-transparent shadow ms-2 me-2 mb-3 mt-1">
                                     <p className="my-auto fs-3">{unixHourConverter(hour.dt) + ":00"}</p>
                                     <HourlyTable hour={hour} />
                                 </div>

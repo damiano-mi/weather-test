@@ -9,25 +9,18 @@ export default function Home() {
 
     return (
         <>
-            <div className="container-fluid" style={{ width: 800 }}>
-                <div className="col">
-                    <div className="row">
-                        <Navbar />
-                    </div>
-                    <div className="row">
-                        <MainDisplay />
-                    </div>
-                    <div className="row mt-3">
-                        <Forecast />
-                    </div>
-                    <div className="row mt-3">
-                        <div className="col">
-                            <AlertsDisplay />
-                        </div>
-                        <div className="col-lg-5">
-                            <WorldDisplay />
-                        </div>
-                    </div>
+            <div className="col">
+                <div className="row">
+                    <MainDisplay />
+                </div>
+                <div className="row mt-4">
+                    <Forecast />
+                </div>
+                <div className="row mt-4">
+                    <AlertsDisplay />
+                </div>
+                <div className="row mt-4">
+                    <WorldDisplay />
                 </div>
             </div>
         </>

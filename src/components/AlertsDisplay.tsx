@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../state/store";
 import { unixDateHourConverter } from "../utilities/UnixConverter";
 import { upperCaseFormat } from "../utilities/StringFormat";
+import { Link } from "react-router-dom";
 
 export default function AlertsDisplay() {
 
@@ -13,32 +14,32 @@ export default function AlertsDisplay() {
     const { data, isLoading } = useGetWeatherQuery({ lat: city.lat, lon: city.lon });
 
     return (
-        <div className="card text-center text-white bg-white bg-opacity-50 bg-gradient border-0 shadow rounded-4 ms-2 mb-4" style={{ height: "450px" }}>
-            {data && data.alerts && (<><p className="fs-3 mt-2 fw-bold">Alerts in {city.name}</p>
-                <table className="table table-dark border-light">
-                    <thead>
-                        <tr>
-                            <th><Icon.Clock color={"white"} size={20} /></th>
-                            <th><Icon.ClockFill color={"white"} size={20} /></th>
-                            <th><Icon.ExclamationTriangleFill color={"white"} size={20} /></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.alerts.map((alert, id) => (
-                            <tr className="align-middle" key={id}>
-                                <td><p className="fs-5 my-auto">{unixDateHourConverter(alert.start)}</p></td>
-                                <td><p className="fs-5 my-auto">{unixDateHourConverter(alert.end)}</p></td>
-                                <td><p className="fs-4 my-auto">{upperCaseFormat(alert.event)}</p></td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                <div className="text-center mb-3">
-                    <button className="btn btn-outline-light fs-5">More info</button>
+        <div className="card text-white bg-danger bg-opacity-25 bg-gradient border-0 shadow rounded-5">
+            <div className="row mt-1">
+                <div className="col"><p className="fs-3 ms-2 fw-bold my-auto"><Icon.ExclamationTriangleFill size={22} className="mb-1"/> Alerts in {city.name}</p></div>
+            </div>
+            {data && data.alerts && (
+                <div className="row">
+                    <div className="col mx-auto ms-2">
+                        <p className="fs-5"><Icon.ClockFill className="mb-1 me-1"/> {unixDateHourConverter(data.alerts[0].start)} <Icon.ArrowRight className="mb-1"/> {unixDateHourConverter(data.alerts[0].end)}</p>
+                    </div>
+                    <div className="col">
+                        <p className="fs-5">{upperCaseFormat(data.alerts[0].event)}</p>
+                    </div>
                 </div>
-            </>
             )}
-            {data && !data.alerts && <p className="my-auto fs-2 fw-bold">No alerts found</p>}
+            {data && !data.alerts && (
+                <div className="row">
+                    <div className="col">
+                        <p className="fs-5 ms-2">No national weather alerts found</p>
+                    </div>
+                </div>
+            )}
+            <div className="row">
+                <div className="col text-center mb-3">
+                    <Link to="/alerts" className={data && !data.alerts ? "pe-none" : ""}><button className="btn btn-secondary" disabled={data && !data.alerts}>See all alerts</button></Link>
+                </div>
+            </div>
         </div>
     );
 }

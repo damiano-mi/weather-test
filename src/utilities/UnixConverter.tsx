@@ -23,10 +23,15 @@ export function unixDateHourConverter(timestamp: number) {
 
 export function unixAllInfoConverter(timestamp: number) {
     let date = new Date(timestamp * 1000);
-    return date.toString();
+    return date.toLocaleString();
 }
 
 export function unixDayMonthConverter(timestamp: number) {
     let date = new Date(timestamp * 1000);
     return date.getDate() + " " + date.toLocaleString('default', { month: 'long' });
+}
+
+export function unixWeekNameConverter(timestamp: number) {
+    let date = new Date(timestamp * 1000);
+    return date.toLocaleString('en-us', {  weekday: 'long' });
 }

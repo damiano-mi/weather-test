@@ -4,35 +4,32 @@ export default function WorldDisplay() {
 
     return (
 
-        <div className="card text-center text-white bg-black bg-opacity-50 bg-gradient border-0 shadow rounded-4" style={{ height: "450px" }}>
-            <p className="fs-3 mt-2 fw-bold">World weather</p>
+        <div className="text-white">
+            <p className="fs-3 fw-bold">World weather</p>
             <table className="table table-dark table-borderless">
                 <tbody>
                     <tr className="align-middle">
-                        <td><p className="">O</p></td>
-                        <td><p className="">15 °C</p></td>
-                        <td><p className="fs-3">Paris</p></td>
+                        <td><p className="my-auto">O</p></td>
+                        <td><p className="my-auto">15 °C</p></td>
+                        <td><p className="fs-3 my-auto">Paris</p></td>
                     </tr>
                     <tr className="align-middle">
-                        <td><p className="">O</p></td>
-                        <td><p className="">15 °C</p></td>
-                        <td><p className="fs-3">New York</p></td>
+                        <td><p className="my-auto">O</p></td>
+                        <td><p className="my-auto">15 °C</p></td>
+                        <td><p className="fs-3 my-auto">New York</p></td>
                     </tr>
                     <tr className="align-middle">
-                        <td><p className="">O</p></td>
-                        <td><p className="">15 °C</p></td>
-                        <td><p className="fs-3">Tokyo</p></td>
+                        <td><p className="my-auto">O</p></td>
+                        <td><p className="my-auto">15 °C</p></td>
+                        <td><p className="fs-3 my-auto">Tokyo</p></td>
                     </tr>
                     <tr className="align-middle">
-                        <td><p className="">O</p></td>
-                        <td><p className="">15 °C</p></td>
-                        <td><p className="fs-3">Madrid</p></td>
+                        <td><p className="my-auto">O</p></td>
+                        <td><p className="my-auto">15 °C</p></td>
+                        <td><p className="fs-3 my-auto">Madrid</p></td>
                     </tr>
                 </tbody>
             </table>
-            <div className="text-center">
-                <button className="btn btn-outline-light fs-5">Search</button>
-            </div>
         </div>
     );
 }
