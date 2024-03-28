@@ -1,7 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
+export type TemperatureScale = "C" | "K" | "F";
+
 interface TemperatureState {
-    temperature: "C" | "K" | "F";
+    temperature: TemperatureScale;
 }
 
 const initialState: TemperatureState = {
@@ -12,7 +14,7 @@ const temperatureSlice = createSlice({
     name: "temperature",
     initialState,
     reducers: {
-        setTemperature: (state, action: PayloadAction<"C" | "K" | "F">) => {
+        setTemperature: (state, action: PayloadAction<TemperatureScale>) => {
             state.temperature = action.payload;
         }
     }

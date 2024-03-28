@@ -1,0 +1,38 @@
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+body {
+    background: linear-gradient(45deg, rgb(62, 58, 133) 0%, rgb(20, 20, 121) 15%, rgba(0, 212, 255, 1) 100%);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+input:focus {
+    outline: none;
+}
+
+table,
+td,
+th,
+tr {
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+td,
+tr {
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}

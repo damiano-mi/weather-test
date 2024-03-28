@@ -5,7 +5,7 @@ import { citiesAPI } from "../services/citiesAPI";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../state/store";
 import { setCity } from "../state/city/citySlice";
-import "../assets/styles/mainStyle.css"
+import "../assets/styles/search.css"
 
 export default function SearchBar() {
 

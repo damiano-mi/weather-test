@@ -1,10 +1,12 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Weather } from "../../types/types";
 
+export type WeatherConditionParameter = "temperature" | "rainfall" | "wind" | "sunrise"
+
 interface WeatherState {
     weather: Weather,
     day: number,
-    selectedParameter: string
+    selectedParameter: WeatherConditionParameter
 }
 
 const initialState: WeatherState = {
@@ -136,7 +138,7 @@ const weatherSlice = createSlice({
         setDay: (state, action: PayloadAction<number>) => {
             state.day = action.payload;
         },
-        setParameter: (state, action: PayloadAction<string>) => {
+        setParameter: (state, action: PayloadAction<WeatherConditionParameter>) => {
             state.selectedParameter = action.payload;
         }
     }

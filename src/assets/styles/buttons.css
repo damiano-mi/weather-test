@@ -1,0 +1,28 @@
+.tempSelector {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    width: 30px;
+    height: 30px;
+    appearance: none;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.tempSelector:focus {
+    outline: 0;
+}
+
+.tempSelector:hover {
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.positionButton {
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    color: white;
+    margin-top: 8px;
+}

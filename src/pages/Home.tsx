@@ -1,8 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css"
-import MainDisplay from "../components/MainDisplay";
-import Navbar from "../components/Navbar";
-import Forecast from "../components/ForecastList";
-import AlertsDisplay from "../components/AlertsDisplay";
+import MainWeatherLayout from "../components/mainDisplay/MainWeatherLayout";
+import ForecastList from "../components/forecast/ForecastList";
+import AlertsDisplay from "../components/alerts/AlertsDisplay";
 import WorldDisplay from "../components/WorldDisplay";
 
 export default function Home() {
@@ -11,10 +10,10 @@ export default function Home() {
         <>
             <div className="col">
                 <div className="row">
-                    <MainDisplay />
+                    <MainWeatherLayout />
                 </div>
                 <div className="row mt-4">
-                    <Forecast />
+                    <ForecastList />
                 </div>
                 <div className="row mt-4">
                     <AlertsDisplay />

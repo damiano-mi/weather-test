@@ -22,9 +22,14 @@ const citySlice = createSlice({
     reducers: {
         setCity: (state, action: PayloadAction<City>) => {
             state.city = action.payload;
+        },
+        setCoords: (state, action: PayloadAction<{ lat: number, lon: number }>) => {
+            state.city.lat = action.payload.lat;
+            state.city.lon = action.payload.lon;
         }
     }
 });
 
-export const { setCity } = citySlice.actions;
+export const citySelector = (state: { city: CityState }) => state.city.city;
+export const { setCity, setCoords } = citySlice.actions;
 export default citySlice.reducer;
